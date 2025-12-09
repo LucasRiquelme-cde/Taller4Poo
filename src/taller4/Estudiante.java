@@ -60,5 +60,24 @@ public class Estudiante {
 	public String getCorreo() {
 		return correo;
 	}
+	public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+	
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+    
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
+    }
+    
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
 	
 }

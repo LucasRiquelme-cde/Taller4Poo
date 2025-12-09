@@ -23,11 +23,22 @@ public abstract class Usuario {
 	public String getRol() {
 		return rol;
 	}
-
-	@Override
+	
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", Contraseña=" + Contraseña + ", rol=" + rol + ", info=" + info + "]";
 	}
+	
+	public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+	
+    public void setContraseña(String contraseña) {
+        this.Contraseña = contraseña;
+    }
+    
+    public void setInfo(String info) {
+        this.info = info;
+    }
 	
 	
 	

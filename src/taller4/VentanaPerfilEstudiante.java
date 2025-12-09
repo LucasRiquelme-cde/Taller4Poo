@@ -2,27 +2,26 @@ package taller4;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class VentanaPerfilEstudiante extends JFrame {
 
 	private Estudiante estudiante;
+	private EstrategiaPromedio estrategia;
+	private JLabel lPromedioValor;
+	private JLabel lTipoPromedio;
 
 	public VentanaPerfilEstudiante(Estudiante e) {
 		this.estudiante = e;
+		this.estrategia = new PromedioSimple();
 		
 		setTitle("Mi Perfil Académico");
 		setSize(400, 350);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-		JPanel panel = new JPanel(new GridLayout(7, 2, 10, 10));
+		JPanel panel = new JPanel(new GridLayout(8, 2, 10, 10));
 
-		
 		panel.add(new JLabel("Nombre:"));
 		panel.add(new JLabel(estudiante.getNombre()));
 
@@ -34,9 +33,15 @@ public class VentanaPerfilEstudiante extends JFrame {
 
 		panel.add(new JLabel("Correo:"));
 		panel.add(new JLabel(estudiante.getCorreo()));
-
-		panel.add(new JLabel("Promedio General:"));
-		panel.add(new JLabel(String.valueOf(calcularPromedioGeneral())));
+		lTipoPromedio = new JLabel("Promedio General:");
+		panel.add(lTipoPromedio);
+		
+		lPromedioValor = new JLabel(String.valueOf(estrategia.calcular(estudiante.getListaNotas())));
+		panel.add(lPromedioValor);
+		JButton bCambiarEstrategia = new JButton("Cambiar Estrategia");
+		bCambiarEstrategia.addActionListener(event -> cambiarEstrategia());
+		panel.add(new JLabel("Modo de Cálculo:"));
+		panel.add(bCambiarEstrategia);
 		
 		JButton bSemestral = new JButton("Ver en Consola");
 		bSemestral.addActionListener(event -> calcularPromedioSemestral());
@@ -48,43 +53,24 @@ public class VentanaPerfilEstudiante extends JFrame {
 		setVisible(true);
 	}
 
-	private double calcularPromedioGeneral() {
-		ArrayList<Nota> notas = estudiante.getListaNotas();
-		if (notas.isEmpty()) {
-			return 0.0;
-		}
-
-		double suma = 0;
-		int cantidad = 0;
-		
-		for (Nota n : notas) {
-			if (n.getCalificacion() > 0) {
-				suma += n.getCalificacion();
-				cantidad++;
-			}
+	private void cambiarEstrategia() {
+		if (estrategia instanceof PromedioSimple) {
+			estrategia = new PromedioSoloAprobados();
+			lTipoPromedio.setText("Promedio (Solo Aprobadas):");
+		} else {
+			estrategia = new PromedioSimple();
+			lTipoPromedio.setText("Promedio (General):");
 		}
 		
-		if (cantidad == 0) {
-			return 0.0;
-		}
-		return Math.round((suma / cantidad) * 100.0) / 100.0;
+		double nuevoValor = estrategia.calcular(estudiante.getListaNotas());
+		lPromedioValor.setText(String.valueOf(nuevoValor));
+		System.out.println("Estrategia cambiada. Nuevo cálculo realizado.");
 	}
 
 	private void calcularPromedioSemestral() {
 		System.out.println("Promedios por Semestre para: " + estudiante.getNombre());
 		ArrayList<Nota> notas = estudiante.getListaNotas();
 		
-		for (int i = 1; i <= 12; i++) {
-			double suma = 0;
-			int cantidad = 0;
-			String semestreActual = String.valueOf(i);
-			for (Nota n : notas) {
-				if (n.getSemestreCursado().equals(n.getSemestreCursado())) { 
-				}
-			}
-		}
-		
-
 		for (Nota n : notas) {
 			System.out.println("Semestre: " + n.getSemestreCursado() + "  Asignatura: " + n.getCodigoAsignatura() + "  Nota: " + n.getCalificacion());
 		}
