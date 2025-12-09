@@ -13,8 +13,8 @@ Este proyecto fue desarrollado para la asignatura **Programación Orientada a Ob
 ---
 
 ## Integrantes
-* **Integrante 1:** Matías Collao - 22060152-8 - MatiasCollao
-* **Integrante 2:** Lukas Riquelme - [RUT] - LucasRiquelme-cde
+* **Integrante 1:** Matías Collao - 22.060.152-8 - MatiasCollao
+* **Integrante 2:** Lukas Riquelme - 21.943.208-9 - LucasRiquelme-cde
 
 ---
 
@@ -22,44 +22,45 @@ Este proyecto fue desarrollado para la asignatura **Programación Orientada a Ob
 El código fuente se encuentra bajo el paquete principal `taller4` y se organiza lógicamente separando la lógica de negocio, el modelo de datos y la interfaz gráfica.
 
 ### Clases Principales y Lógica
-* `App.java`: Punto de entrada de la aplicación (Main). Inicia el login y la interfaz gráfica.
+* `App.java`: Punto de entrada (Main). Contiene el Login y toda la lógica del **Menú Administrador**.
 * `Sistema.java`: Clase central (**Singleton**) que gestiona las listas de datos y la carga de archivos (`.txt`).
 * `FactoryUsuario.java`: Clase encargada de la creación de instancias de usuarios (**Factory**).
 
 ### Modelo de Dominio
-* `Usuario.java` (Clase Abstracta): Padre de `Administrador`, `Coordinador` y `Estudiante` (aunque Estudiante tiene su propia estructura compleja).
-* `Estudiante.java`: Contiene la información académica, notas y registros del alumno.
-* `Curso.java`: Representa las asignaturas con sus créditos, semestre y prerrequisitos.
-* `Certificacion.java`: Define las líneas de certificación disponibles.
-* `Registro.java`: Vincula a un estudiante con una certificación y su estado.
-* `Nota.java`: Almacena el historial académico y calificaciones.
+* `Usuario.java` (Abstracta): Clase padre de los roles del sistema.
+* `Estudiante.java`: Contiene información académica, notas y registros.
+* `Curso.java`, `Certificacion.java`, `Registro.java`, `Nota.java`: Entidades del dominio académico.
 
 ### Patrones y Lógica Adicional
-* `Visitor.java` (Interfaz) y `VisitorConsejo.java`: Implementación del patrón Visitor para lógica de consejería.
+* `Visitor.java` (Interfaz) y `VisitorConsejo.java`: Lógica de consejería académica (**Visitor**).
+* `EstrategiaPromedio.java` (Interfaz): Define el comportamiento para cálculos de notas (**Strategy**).
+* `PromedioSimple.java` y `PromedioSoloAprobadas.java`: Algoritmos concretos de cálculo.
 
 ### Interfaz Gráfica (Java Swing)
-* **Login:** Gestionado en `App.java`.
-* **Coordinador:** `VentanaCoordinador`, `VentanaModificarCertificacion`, `VentanaGenerarCertificados`, `VentanaEstadisticasInscripciones`, `VentanaAsignaturasCriticas`, `VentanaConsultarEstudiante`, `VentanaValidarAvance`.
+* **Coordinador:** `VentanaCoordinador` y sus sub-ventanas de gestión.
 * **Estudiante:** `VentanaEstudiante`, `VentanaPerfilEstudiante`, `VentanaMallaCurricular`, `VentanaInscripcionCertificaciones`, `VentanaProgresoEstudiante`.
-* **Administrador:** `VentanaAdministrador`.
 
 ---
 
 ## Patrones de Diseño Implementados
 
-El sistema implementa los siguientes patrones de diseño para cumplir con los requisitos de arquitectura y buenas prácticas:
+El sistema implementa 4 patrones de diseño obligatorios para cumplir con los requisitos de arquitectura:
 
 1.  **Singleton Pattern (`Sistema.java`)**:
-    * **Uso:** Garantiza que exista una única instancia de la clase `Sistema` durante toda la ejecución.
-    * **Justificación:** Centraliza el acceso a las listas de datos (Estudiantes, Cursos, Certificaciones) y asegura que todos las ventanas accedan y modifiquen la misma información en memoria.
+    * **Uso:** Garantiza una única instancia de la clase `Sistema`.
+    * **Justificación:** Centraliza el acceso a los datos (listas) para que todas las ventanas operen sobre la misma información en memoria.
 
 2.  **Factory Method Pattern (`FactoryUsuario.java`)**:
-    * **Uso:** Centraliza la creación de objetos `Usuario` (`Administrador` o `Coordinador`) basándose en el rol leído desde el archivo de texto.
-    * **Justificación:** Desacopla la lógica de creación de objetos de la lógica de negocio principal, facilitando la escalabilidad si se añaden nuevos roles.
+    * **Uso:** Crea objetos `Administrador` o `Coordinador` según el rol leído.
+    * **Justificación:** Desacopla la creación de objetos de la lógica principal, facilitando la escalabilidad de roles.
 
 3.  **Visitor Pattern (`Visitor.java`, `VisitorConsejo.java`)**:
-    * **Uso:** Implementado en el menú de Estudiante (`VentanaProgresoEstudiante`).
-    * **Justificación:** Permite agregar nuevas operaciones (como "Dar consejo personalizado") a las estructuras de objetos (`Certificacion`) sin modificar las clases sobre las que opera. Separa el algoritmo de los objetos.
+    * **Uso:** Implementado en `VentanaProgresoEstudiante`.
+    * **Justificación:** Permite ejecutar operaciones nuevas (dar consejos) sobre objetos `Certificacion` sin modificar su estructura interna.
+
+4.  **Strategy Pattern (`EstrategiaPromedio.java`, `PromedioSimple`, `PromedioSoloAprobadas`)**:
+    * **Uso:** Implementado en `VentanaPerfilEstudiante` para calcular promedios.
+    * **Justificación:** Permite intercambiar dinámicamente el algoritmo de cálculo (Promedio General vs. Solo Aprobadas) en tiempo de ejecución según la preferencia del usuario.
 
 ---
 
@@ -72,21 +73,14 @@ El sistema implementa los siguientes patrones de diseño para cumplir con los re
 
 ### Pasos para ejecutar
 1.  Clonar el repositorio o importar el proyecto en Eclipse.
-2.  Asegurarse de que la carpeta del proyecto contenga en la raíz los archivos de datos obligatorios:
-    * `usuarios.txt`
-    * `estudiantes.txt`
-    * `cursos.txt`
-    * `Certificaciones.txt`
-    * `Registros.txt`
-    * `Notas.txt`
-    * `Asignaturas_certificaciones.txt`
+2.  Asegurarse de que la carpeta raíz contenga los archivos `.txt` obligatorios (`usuarios.txt`, `estudiantes.txt`, etc.).
 3.  Abrir la clase `taller4.App.java`.
 4.  Ejecutar como **Java Application**.
 
-### Credenciales de Prueba (Ejemplos)
+### Credenciales de Prueba
 * **Admin:** Usuario: `admin` / Pass: `admin123`
 * **Coordinador:** Usuario: `coord.sw` / Pass: `software789`
 * **Estudiante:** Usuario: `12345678-9` / Pass: `password123`
 
 ---
-*Universidad Católica del Norte*
+*Universidad Católica del Norte - 2025*
