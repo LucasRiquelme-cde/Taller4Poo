@@ -14,7 +14,7 @@ Este proyecto fue desarrollado para la asignatura **Programación Orientada a Ob
 
 ## Integrantes
 * **Integrante 1:** Matías Collao - 22.060.152-8 - MatiasCollao
-* **Integrante 2:** Lukas Riquelme - 21.943.208-9 - LucasRiquelme-cde
+* **Integrante 2:** Lucas Riquelme - 21.943.208-9 - LucasRiquelme-cde
 
 ---
 
