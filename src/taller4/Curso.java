@@ -22,7 +22,21 @@ public class Curso {
 		return nombre;
 	}
 
+	public int getSemestre() {
+		return semestre;
+	}
+
+	public int getCreditos() {
+		return creditos;
+	}
 	
+	public String getPrerrequisitos() {
+		return prerrequisitos;
+	}
+
+	public String getArea() {
+		return area;
+	}
 	
 	
 }

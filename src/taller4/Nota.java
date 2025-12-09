@@ -25,6 +25,10 @@ public class Nota {
 	public String getEstado() {
 		return estado;
 	}
+
+	public String getSemestreCursado() {
+		return semestreCursado;
+	}
 	
 	
 	

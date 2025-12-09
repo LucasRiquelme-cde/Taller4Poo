@@ -221,4 +221,12 @@ public class Sistema {
 		return listaEstudiantes;
 	}
 
+	public ArrayList<Curso> getListaCursos() {
+		return listaCursos;
+	}
+
+	public ArrayList<Certificacion> getListaCertificaciones() {
+		return listaCertificaciones;
+	}
+
 }

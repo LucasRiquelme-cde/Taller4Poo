@@ -77,30 +77,22 @@ public class App extends JFrame {
 		    VentanaCoordinador ventana = new VentanaCoordinador(s);
 		    
 		} else if (opMenus.equals("E")) {
-			System.out.println("Bienvenido Estudiante");
-			int op = -1;
-			while (true) {
-				printMenuEstudiante();
-				op = escanearDesdeTeclado();
-				
-				if (op == 0) {
-					
-				} else if (op == 1) {
-					
-				} else if (op == 2) {
-					
-				} else if (op == 3) {
-					
-				} else if (op == 4) {
-					
-				} else if (op == 5) {
-					
-				} else if (op == 6) {
-					break;
-				}
-				
-			}
-			
+		    System.out.println("Bienvenido Estudiante");
+		    
+		    
+		    Estudiante estudianteLogueado = null;
+		    for(Estudiante est : s.getlistaEstudiantes()) { 
+		        if(est.getRut().equals(usuario.getText())) {
+		            estudianteLogueado = est;
+		            break;
+		        }
+		    }
+		    
+		    if (estudianteLogueado != null) {
+		        new VentanaEstudiante(estudianteLogueado);
+		       
+		    }
+		
 		} else {
 			System.out.println("Usuario o contraseña incorrectos");
 		}
