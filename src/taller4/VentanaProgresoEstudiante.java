@@ -1,13 +1,10 @@
+//Matías Collao / 22.060.152-8 / ICCI
+//Lucas Riquelme / 21.943.208-9 / ICCI
 package taller4;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
+import javax.swing.*;
 public class VentanaProgresoEstudiante extends JFrame {
 	Sistema s = Sistema.getInstance();
 	private Estudiante estudiante;
