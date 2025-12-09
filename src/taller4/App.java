@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 public class App extends JFrame {
 	
-	static Sistema s = new Sistema();
+	static Sistema s = Sistema.getInstance();
 	static JFrame ventana = crearVentana();
 	public static void main(String[] args) throws FileNotFoundException {
 		s.iniciar();
@@ -23,11 +23,11 @@ public class App extends JFrame {
 	}
 	private static JFrame crearVentana() {
 		JFrame ventana = new JFrame("AcademiCore");
-		ventana.setSize(750,600);
+		ventana.setSize(450, 300);
 		ventana.setLocationRelativeTo(null);
 		ventana.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		JPanel panelLogin = new JPanel(new GridLayout(3, 2));
+		JPanel panelLogin = new JPanel(new GridLayout(3, 2, 10, 10));
 		JLabel textoLogin = new JLabel("Bienvenido");
 		JButton botonLogin = new JButton("Ingresar");
 		
@@ -74,30 +74,8 @@ public class App extends JFrame {
 			
 			
 		} else if (opMenus.equals("C")) {
-			System.out.println("Bienvenido Coordinador");
-			int op = -1;
-			while (true) {
-				printMenuUsuario();
-				op = escanearDesdeTeclado();
-				
-				if (op == 0) {
-					
-				} else if (op == 1) {
-					
-				} else if (op == 2) {
-					
-				} else if (op == 3) {
-					
-				} else if (op == 4) {
-					
-				} else if (op == 5) {
-					
-				} else if (op == 6) {
-					break;
-				}
-				
-			}
-			
+		    VentanaCoordinador ventana = new VentanaCoordinador(s);
+		    
 		} else if (opMenus.equals("E")) {
 			System.out.println("Bienvenido Estudiante");
 			int op = -1;
@@ -144,7 +122,7 @@ public class App extends JFrame {
 				+ "7) Mostrar requisitos y descripción de cada línea\r\n"
 				+ "8) Proceso de inscripción con validaciones\r\n"
 				+ "9) Verificar prerrequisitos académicos\r\n"
-				+ "-Seguimiento de Progreso"
+				+ "-Seguimiento de Progreso\r\n"
 				+ "10) Dashboard personal con progreso en certificaciones inscritas\r\n"
 				+ "11) Aplicar Visitor para diferentes acciones según tipo de certificación\r\n"
 				+ "12) Mostrar asignaturas pendientes para completar certificaciones");

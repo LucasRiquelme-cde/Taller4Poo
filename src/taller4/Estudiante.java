@@ -36,7 +36,29 @@ public class Estudiante {
 	public String getContraseña() {
 		return contraseña;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public ArrayList<Registro> getListaRegistrosE() {
+		return listaRegistrosE;
+	}
+
+	public ArrayList<Nota> getListaNotas() {
+		return listaNotas;
+	}
 	
-	
+	public String getCarrera() {
+		return carrera;
+	}
+
+	public String getSemestre() {
+		return semestre;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
 	
 }

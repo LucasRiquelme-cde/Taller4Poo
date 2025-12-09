@@ -13,8 +13,18 @@ public class Registro {
 		this.estado = estado;
 		this.progreso = progreso;
 	}
+
+	public String getIdCertificacion() {
+		return idCertificacion;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
 	
-	
+	public int getProgreso() {
+		return progreso;
+	}
 	
 	
 }

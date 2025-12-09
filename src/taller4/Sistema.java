@@ -9,12 +9,33 @@ import javax.swing.JTextField;
 
 public class Sistema {
 
-	static FactoryUsuario fu = new FactoryUsuario();
-	static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
-	static ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
-	static ArrayList<Curso> listaCursos = new ArrayList<Curso>();
-	static ArrayList<Certificacion> listaCertificaciones = new ArrayList<Certificacion>();
+	
+		private static Sistema instancia;
+		
+		static FactoryUsuario fu;
+		static ArrayList<Usuario> listaUsuarios;
+		static ArrayList<Estudiante> listaEstudiantes;
+		static ArrayList<Curso> listaCursos;
+		static ArrayList<Certificacion> listaCertificaciones;
 
+		
+		private Sistema() {
+			this.fu = new FactoryUsuario();
+			this.listaUsuarios = new ArrayList<Usuario>();
+			this.listaEstudiantes = new ArrayList<Estudiante>();
+			this.listaCursos = new ArrayList<Curso>();
+			this.listaCertificaciones = new ArrayList<Certificacion>();
+		}
+
+		public static Sistema getInstance() {
+			if (instancia == null) {
+				instancia = new Sistema();
+			}
+			return instancia;
+		}
+	
+	
+	
 	public void iniciar() throws FileNotFoundException {
 		listaUsuarios = leerUsuarios("usuarios.txt");
 		listaEstudiantes = leerEstudiantes("estudiantes.txt");
@@ -34,9 +55,9 @@ public class Sistema {
 			String idCertificacion = parte[0];
 			String nRCCurso = parte[1];
 			for (Certificacion c : listaCertificaciones) {
-				if (c.getId() == idCertificacion) {
+				if (c.getId().equals(idCertificacion)) {
 					for (Curso cu : listaCursos) {
-						if (cu.getnRc() == nRCCurso) {
+						if (cu.getnRc().equals(nRCCurso)) {
 							c.agregarCurso(cu);
 						}
 					}
@@ -55,7 +76,7 @@ public class Sistema {
 			String[] parte = linea.split(";");
 			for (Estudiante e : listaEstudiantes) {
 				String rut = parte[0];
-				if (e.getRut() == rut) {
+				if (e.getRut().equals(rut)) {
 					String codigoAsignatura = parte[1];
 					double calificacion = Double.valueOf(parte[2]);
 					String estado = parte[3];
@@ -77,7 +98,7 @@ public class Sistema {
 			String[] parte = linea.split(";");
 			for (Estudiante e : listaEstudiantes) {
 				String rut = parte[0];
-				if (e.getRut() == rut) {
+				if (e.getRut().equals(rut)) {
 					String idCertificacion = parte[1];
 					String fecha = parte[2];
 					String estado = parte[3];
@@ -161,7 +182,7 @@ public class Sistema {
 			String contraseña = parte[1];
 			String rol = parte[2];
 			String info = "";
-			if (rol == "Coordinador") {
+			if (rol.equals("Coordinador")) {
 				info = parte[3];
 			}
 			Usuario u = fu.getUsuario(nombre, contraseña, rol, info);
@@ -194,6 +215,10 @@ public class Sistema {
 		}
 
 		return op;
+	}
+
+	public ArrayList<Estudiante> getlistaEstudiantes() {
+		return listaEstudiantes;
 	}
 
 }

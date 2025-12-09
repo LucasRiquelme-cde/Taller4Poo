@@ -17,6 +17,11 @@ public class Curso {
 	public String getnRc() {
 		return nRc;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
 	
 	
 	

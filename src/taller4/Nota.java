@@ -14,7 +14,17 @@ public class Nota {
 		this.calificacion = calificacion;
 	}
 
+	public String getCodigoAsignatura() {
+		return codigoAsignatura;
+	}
 	
+	public double getCalificacion() {
+		return calificacion;
+	}
+	
+	public String getEstado() {
+		return estado;
+	}
 	
 	
 	
