@@ -10,10 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * Ventana que permite a un Coordinador consultar el perfil completo de un estudiante.
+ * Busca por RUT y muestra en consola la información personal, historial de notas
+ * y estado de las certificaciones inscritas.
+ */
 public class VentanaConsultarEstudiante extends JFrame {
 
 	JTextField tRut;
 
+	/**
+	 * Constructor de la ventana de consulta.
+	 * Configura la interfaz gráfica solicitando el RUT del estudiante.
+	 */
 	public VentanaConsultarEstudiante() {
 		setTitle("Consultar Perfil de Estudiante");
 		setSize(400, 200);
@@ -41,6 +50,11 @@ public class VentanaConsultarEstudiante extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Realiza la búsqueda del estudiante en el sistema mediante su RUT.
+	 * Si lo encuentra, imprime en la salida estándar (consola) todos los datos
+	 * académicos y personales del alumno, así como sus certificaciones.
+	 */
 	public void buscar() {
 		String rutBuscado = tRut.getText();
 		boolean encontrado = false;

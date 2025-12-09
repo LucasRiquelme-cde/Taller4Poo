@@ -8,10 +8,22 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
+/**
+ * Ventana que visualiza la malla curricular del estudiante de forma gráfica e interactiva.
+ * Organiza las asignaturas por semestre y utiliza códigos de colores (Verde, Rojo, Gris)
+ * para indicar el estado académico de cada curso.
+ */
 public class VentanaMallaCurricular extends JFrame {
+	
 	Sistema s = Sistema.getInstance();
 	private Estudiante estudiante;
 
+	/**
+	 * Constructor de la ventana de malla curricular.
+	 * Genera dinámicamente los paneles para cada semestre (del 1 al 10) y agrega
+	 * los botones correspondientes a las asignaturas.
+	 * * @param e El estudiante del cual se visualizará la malla.
+	 */
 	public VentanaMallaCurricular(Estudiante e) {
 		this.estudiante = e;
 		
@@ -35,6 +47,13 @@ public class VentanaMallaCurricular extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Crea un panel contenedor para un semestre específico.
+	 * Filtra la lista de cursos del sistema para encontrar los que corresponden al semestre dado
+	 * y crea un botón para cada uno, asignando el color según su estado.
+	 * * @param numeroSemestre El número del semestre a renderizar.
+	 * @return JPanel configurado con los botones de las asignaturas.
+	 */
 	private JPanel crearPanelSemestre(int numeroSemestre) {
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder("Semestre " + numeroSemestre));
@@ -64,6 +83,12 @@ public class VentanaMallaCurricular extends JFrame {
 		return panel;
 	}
 
+	/**
+	 * Determina el estado de una asignatura para el estudiante actual.
+	 * Revisa el historial de notas para ver si está aprobada (>= 4.0), reprobada o pendiente.
+	 * * @param nrcCurso Código único de la asignatura.
+	 * @return String con el estado ("Aprobada", "Reprobada" o "Pendiente").
+	 */
 	private String obtenerEstadoCurso(String nrcCurso) {
 		ArrayList<Nota> notas = estudiante.getListaNotas();
 		
@@ -79,6 +104,12 @@ public class VentanaMallaCurricular extends JFrame {
 		return "Pendiente";
 	}
 
+	/**
+	 * Muestra los detalles de una asignatura específica en la consola.
+	 * Se activa al hacer clic en el botón de la asignatura.
+	 * * @param c      Objeto Curso seleccionado.
+	 * @param estado Estado actual del curso para el estudiante.
+	 */
 	private void mostrarDetalleCurso(Curso c, String estado) {
 		System.out.println("Información de Asignatura");
 		System.out.println("Nombre: " + c.getNombre());

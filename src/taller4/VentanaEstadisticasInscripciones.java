@@ -6,8 +6,17 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.*;
 
+/**
+ * Ventana que muestra las estadísticas de inscripciones en las distintas líneas de certificación.
+ * Permite al coordinador visualizar cuántos estudiantes están inscritos en cada certificación
+ * mediante un reporte en consola.
+ */
 public class VentanaEstadisticasInscripciones extends JFrame {
 
+	/**
+	 * Constructor de la ventana de estadísticas.
+	 * Configura la interfaz con un botón para generar el reporte.
+	 */
 	public VentanaEstadisticasInscripciones() {
 		setTitle("Estadísticas de Inscripciones");
 		setSize(400, 200);
@@ -30,6 +39,11 @@ public class VentanaEstadisticasInscripciones extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Genera y muestra las estadísticas de inscripción.
+	 * Recorre todas las certificaciones y cuenta cuántos registros existen para cada una
+	 * en la base de estudiantes, imprimiendo el total por consola.
+	 */
 	public void mostrarEstadisticas() {
 		System.out.println("Estadísticas de Inscripciones");
 

@@ -4,12 +4,25 @@ package taller4;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
+/**
+ * Ventana que permite al coordinador validar la consistencia académica de un estudiante.
+ * Compara el progreso registrado en el sistema contra el historial real de notas 
+ * para detectar discrepancias (ej: si completó los cursos pero el certificado no se activó).
+ */
 public class VentanaValidarAvance extends JFrame {
 
 	JTextField tRut;
 
+	/**
+	 * Constructor de la ventana de validación.
+	 * Configura la interfaz para solicitar el RUT del estudiante a auditar.
+	 */
 	public VentanaValidarAvance() {
 		setTitle("Validar Avance Académico");
 		setSize(400, 200);
@@ -37,6 +50,14 @@ public class VentanaValidarAvance extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Ejecuta el proceso de auditoría académica.
+	 * 1. Busca al estudiante por RUT.
+	 * 2. Recorre sus certificaciones inscritas.
+	 * 3. Calcula manualmente cuántos cursos de esa certificación ha aprobado realmente según sus notas.
+	 * 4. Compara este cálculo con el porcentaje de progreso almacenado en el registro.
+	 * 5. Emite una alerta en consola si hay inconsistencias (ej: 100% real vs <100% registrado).
+	 */
 	public void validar() {
 		String rut = tRut.getText();
 		System.out.println("Validación de Avance para: " + rut );

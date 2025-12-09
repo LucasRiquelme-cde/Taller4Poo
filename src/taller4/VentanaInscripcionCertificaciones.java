@@ -8,12 +8,24 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+/**
+ * Ventana que permite a un estudiante inscribirse en nuevas líneas de certificación.
+ * Gestiona la validación de prerrequisitos (créditos acumulados), verifica duplicidad
+ * de inscripciones y muestra el catálogo disponible.
+ */
 public class VentanaInscripcionCertificaciones extends JFrame {
+	
 	Sistema s = Sistema.getInstance();
 	
 	private Estudiante estudiante;
 	private JTextField tId;
 
+	/**
+	 * Constructor de la ventana de inscripción.
+	 * Inicializa la interfaz gráfica con los campos para ingresar el ID de la certificación
+	 * y los botones para listar, ver detalles e inscribirse.
+	 * * @param e Objeto Estudiante que está realizando la inscripción.
+	 */
 	public VentanaInscripcionCertificaciones(Estudiante e) {
 		this.estudiante = e;
 		
@@ -50,6 +62,10 @@ public class VentanaInscripcionCertificaciones extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Muestra en la consola el catálogo completo de certificaciones disponibles en el sistema.
+	 * Imprime el ID y el nombre de cada una.
+	 */
 	public void listarCertificaciones() {
 		System.out.println("Catálogo de Certificaciones Disponibles");
 		ArrayList<Certificacion> listaCe = s.getListaCertificaciones();
@@ -59,6 +75,10 @@ public class VentanaInscripcionCertificaciones extends JFrame {
 		System.out.println("");
 	}
 
+	/**
+	 * Busca una certificación por el ID ingresado en el campo de texto y muestra sus detalles.
+	 * Imprime descripción, requisitos de créditos y validez.
+	 */
 	public void verDetalles() {
 		String id = tId.getText();
 		boolean encontrada = false;
@@ -78,7 +98,13 @@ public class VentanaInscripcionCertificaciones extends JFrame {
 		}
 	}
 
-	
+	/**
+	 * Ejecuta el proceso de inscripción.
+	 * 1. Verifica que la certificación exista.
+	 * 2. Verifica que el estudiante no esté ya inscrito.
+	 * 3. Valida que el estudiante cumpla con los créditos mínimos requeridos.
+	 * Si todo es correcto, crea un nuevo registro con fecha actual.
+	 */
 	public void inscribir() {
 		String id = tId.getText();
 		Certificacion certAInscribir = null;
@@ -120,6 +146,11 @@ public class VentanaInscripcionCertificaciones extends JFrame {
 		}
 	}
 
+	/**
+	 * Calcula el total de créditos SCT acumulados por el estudiante.
+	 * Solo suma los créditos de asignaturas aprobadas (nota >= 4.0 o estado "Aprobada").
+	 * * @return Total de créditos aprobados.
+	 */
 	private int calcularCreditosAlumno() {
 		int totalCreditos = 0;
 		for (Nota n : estudiante.getListaNotas()) {

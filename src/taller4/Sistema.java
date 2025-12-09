@@ -9,6 +9,12 @@ import java.util.Scanner;
 
 import javax.swing.JTextField;
 
+/**
+ * Clase principal de lógica del negocio (Backend).
+ * Implementa el patrón de diseño Singleton para garantizar una única instancia
+ * que gestiona todas las listas de datos (Usuarios, Estudiantes, Cursos, Certificaciones).
+ * Se encarga de la lectura de archivos de texto y la autenticación.
+ */
 public class Sistema {
 
 	
@@ -20,7 +26,11 @@ public class Sistema {
 		static ArrayList<Curso> listaCursos;
 		static ArrayList<Certificacion> listaCertificaciones;
 
-		
+		/**
+		 * Constructor privado del Sistema.
+		 * Inicializa las listas y la fábrica de usuarios.
+		 * Es privado para prevenir la instanciación directa (Patrón Singleton).
+		 */
 		private Sistema() {
 			this.fu = new FactoryUsuario();
 			this.listaUsuarios = new ArrayList<Usuario>();
@@ -29,6 +39,11 @@ public class Sistema {
 			this.listaCertificaciones = new ArrayList<Certificacion>();
 		}
 
+		/**
+		 * Obtiene la instancia única de la clase Sistema.
+		 * Si no existe, la crea; si ya existe, devuelve la misma.
+		 * * @return La instancia única de Sistema.
+		 */
 		public static Sistema getInstance() {
 			if (instancia == null) {
 				instancia = new Sistema();
@@ -37,7 +52,11 @@ public class Sistema {
 		}
 	
 	
-	
+	/**
+	 * Inicia la carga masiva de datos desde los archivos de texto.
+	 * Ejecuta los métodos de lectura en orden secuencial para asegurar la integridad referencial.
+	 * * @throws FileNotFoundException Si alguno de los archivos requeridos no se encuentra en la raíz.
+	 */
 	public void iniciar() throws FileNotFoundException {
 		listaUsuarios = leerUsuarios("usuarios.txt");
 		listaEstudiantes = leerEstudiantes("estudiantes.txt");
@@ -49,6 +68,12 @@ public class Sistema {
 
 	}
 
+	/**
+	 * Vincula los cursos con las certificaciones correspondientes.
+	 * Lee el archivo de relación y agrega los objetos Curso a la lista interna de cada Certificación.
+	 * * @param string Nombre del archivo a leer ("Asignaturas_certificaciones.txt").
+	 * @throws FileNotFoundException Si el archivo no existe.
+	 */
 	private void crusarCertificaciones(String string) throws FileNotFoundException {
 		Scanner s = new Scanner(new File(string));
 		while (s.hasNextLine()) {
@@ -71,6 +96,12 @@ public class Sistema {
 		s.close();
 	}
 
+	/**
+	 * Carga las notas de los estudiantes desde un archivo.
+	 * Asocia cada calificación al estudiante correspondiente buscándolo por RUT.
+	 * * @param string Nombre del archivo ("Notas.txt").
+	 * @throws FileNotFoundException Si el archivo no existe.
+	 */
 	private void ingresarNotas(String string) throws FileNotFoundException {
 		Scanner s = new Scanner(new File(string));
 		while (s.hasNextLine()) {
@@ -93,6 +124,11 @@ public class Sistema {
 		s.close();
 	}
 
+	/**
+	 * Carga los registros de certificaciones (inscripciones) de los estudiantes.
+	 * * @param string Nombre del archivo ("Registros.txt").
+	 * @throws FileNotFoundException Si el archivo no existe.
+	 */
 	private void ingresarRegistros(String string) throws FileNotFoundException {
 		Scanner s = new Scanner(new File(string));
 		while (s.hasNextLine()) {
@@ -115,6 +151,12 @@ public class Sistema {
 		s.close();
 	}
 
+	/**
+	 * Lee el archivo de Certificaciones y crea los objetos correspondientes.
+	 * * @param string Nombre del archivo.
+	 * @return ArrayList con las certificaciones cargadas.
+	 * @throws FileNotFoundException Si el archivo no existe.
+	 */
 	private ArrayList<Certificacion> leerCertificaciones(String string) throws FileNotFoundException {
 		Scanner s = new Scanner(new File(string));
 		ArrayList<Certificacion> lista = new ArrayList<Certificacion>();
@@ -133,6 +175,13 @@ public class Sistema {
 		return lista;
 	}
 
+	/**
+	 * Lee el archivo de Cursos (asignaturas) y crea los objetos.
+	 * Maneja la lógica para prerrequisitos opcionales.
+	 * * @param string Nombre del archivo.
+	 * @return ArrayList con los cursos cargados.
+	 * @throws FileNotFoundException Si el archivo no existe.
+	 */
 	private ArrayList<Curso> leerCursos(String string) throws FileNotFoundException {
 		Scanner s = new Scanner(new File(string));
 		ArrayList<Curso> lista = new ArrayList<Curso>();
@@ -155,6 +204,12 @@ public class Sistema {
 		return lista;
 	}
 
+	/**
+	 * Lee el archivo de Estudiantes y crea los objetos.
+	 * * @param string Nombre del archivo.
+	 * @return ArrayList con los estudiantes cargados.
+	 * @throws FileNotFoundException Si el archivo no existe.
+	 */
 	private ArrayList<Estudiante> leerEstudiantes(String string) throws FileNotFoundException {
 		Scanner s = new Scanner(new File(string));
 		ArrayList<Estudiante> lista = new ArrayList<Estudiante>();
@@ -174,6 +229,12 @@ public class Sistema {
 		return lista;
 	}
 
+	/**
+	 * Lee el archivo de Usuarios (Staff) y utiliza el FactoryUsuario para crearlos.
+	 * * @param string Nombre del archivo ("usuarios.txt").
+	 * @return ArrayList con los usuarios (Administradores y Coordinadores).
+	 * @throws FileNotFoundException Si el archivo no existe.
+	 */
 	private ArrayList<Usuario> leerUsuarios(String string) throws FileNotFoundException {
 		Scanner s = new Scanner(new File(string));
 		ArrayList<Usuario> lista = new ArrayList<Usuario>();
@@ -195,6 +256,17 @@ public class Sistema {
 
 	}
 
+	/**
+	 * Realiza la autenticación de un usuario en el sistema.
+	 * Busca tanto en la lista de usuarios (staff) como en la de estudiantes.
+	 * * @param usuario    Nombre de usuario o RUT.
+	 * @param contraseña Contraseña ingresada.
+	 * @return Un código indicando el tipo de menú a mostrar:
+	 * "A" para Administrador,
+	 * "C" para Coordinador,
+	 * "E" para Estudiante,
+	 * "" (cadena vacía) si las credenciales son incorrectas.
+	 */
 	public String getMenu(String usuario, String contraseña) {
 		String op = "";
 		
@@ -219,14 +291,26 @@ public class Sistema {
 		return op;
 	}
 
+	/**
+	 * Obtiene la lista completa de estudiantes cargados.
+	 * @return ArrayList de Estudiantes.
+	 */
 	public ArrayList<Estudiante> getlistaEstudiantes() {
 		return listaEstudiantes;
 	}
 
+	/**
+	 * Obtiene la lista completa de cursos cargados.
+	 * @return ArrayList de Cursos.
+	 */
 	public ArrayList<Curso> getListaCursos() {
 		return listaCursos;
 	}
 
+	/**
+	 * Obtiene la lista completa de certificaciones disponibles.
+	 * @return ArrayList de Certificaciones.
+	 */
 	public ArrayList<Certificacion> getListaCertificaciones() {
 		return listaCertificaciones;
 	}

@@ -9,8 +9,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Ventana que permite el análisis de asignaturas críticas (cuellos de botella).
+ * Parte del menú del Coordinador. Calcula estadísticas de reprobación y promedios
+ * para identificar cursos con alto índice de fracaso.
+ */
 public class VentanaAsignaturasCriticas extends JFrame {
 
+	/**
+	 * Constructor de la ventana.
+	 * Configura la interfaz gráfica con un botón para detonar el análisis.
+	 */
 	public VentanaAsignaturasCriticas() {
 		setTitle("Análisis de Asignaturas Críticas");
 		setSize(400, 200);
@@ -33,6 +42,11 @@ public class VentanaAsignaturasCriticas extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Ejecuta el análisis estadístico de todas las asignaturas.
+	 * Recorre la lista de cursos y estudiantes para calcular el promedio general
+	 * y la cantidad de reprobados. Imprime los resultados en la consola.
+	 */
 	public void analizar() {
 		System.out.println("Análisis de Asignaturas Críticas");
 

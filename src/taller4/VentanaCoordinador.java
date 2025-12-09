@@ -4,10 +4,20 @@ package taller4;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Ventana principal del menú para el rol de Coordinador.
+ * Proporciona un panel centralizado con acceso a las funcionalidades de gestión 
+ * de certificaciones, generación de certificados, estadísticas y seguimiento de estudiantes.
+ */
 public class VentanaCoordinador extends JFrame {
 
     private Sistema s; 
 
+    /**
+     * Constructor de la Ventana del Coordinador.
+     * Configura las propiedades básicas de la ventana e inicializa los componentes.
+     * * @param s Instancia del sistema principal (Singleton) para el acceso a datos.
+     */
     public VentanaCoordinador(Sistema s) {
         this.s = s;
 
@@ -20,6 +30,10 @@ public class VentanaCoordinador extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Inicializa y organiza los botones del menú en un diseño de cuadrícula.
+     * Asigna los Event Listeners para abrir las sub-ventanas correspondientes a cada funcionalidad.
+     */
     private void Componentes() {
 
         JPanel panel = new JPanel();

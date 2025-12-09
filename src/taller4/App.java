@@ -8,16 +8,31 @@ import java.util.*;
 
 import javax.swing.*;
 
+/**
+ * Clase principal de la aplicación AcademiCore.
+ * Extiende JFrame para manejar la ventana de inicio de sesión.
+ * Contiene el método main y la lógica del menú de Administrador.
+ */
 public class App extends JFrame {
 	
 	static Sistema s = Sistema.getInstance();
 	static JFrame ventana = crearVentana();
 	
+	/**
+	 * Punto de entrada principal de la aplicación.
+	 * Inicializa el sistema cargando los datos y muestra la ventana de login.
+	 * * @param args Argumentos de la línea de comandos (no utilizados).
+	 * @throws FileNotFoundException Si alguno de los archivos de datos no se encuentra.
+	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		s.iniciar();
 		ventana.setVisible(true);
 	}
 
+	/**
+	 * Crea y configura la ventana de inicio de sesión (Login).
+	 * * @return JFrame configurado con los campos de usuario y contraseña.
+	 */
 	private static JFrame crearVentana() {
 		JFrame ventana = new JFrame("AcademiCore");
 		ventana.setSize(450, 300);
@@ -45,6 +60,14 @@ public class App extends JFrame {
 		return ventana;
 	}
 
+	/**
+	 * Maneja la acción del botón de login.
+	 * Valida las credenciales y redirige al menú correspondiente (Admin, Coordinador, Estudiante).
+	 * Contiene la lógica completa del menú de consola para el Administrador.
+	 * * @param usuario Campo de texto con el nombre de usuario/RUT.
+	 * @param contraseña Campo de texto con la contraseña.
+	 * @return null (uso interno para el ActionListener).
+	 */
 	private static Object accionBLogin(JTextField usuario, JTextField contraseña) {
 		String opMenus = s.getMenu(usuario.getText(), contraseña.getText());
 		
@@ -237,6 +260,9 @@ public class App extends JFrame {
 		return null;
 	}
 
+	/**
+	 * Muestra las opciones del menú de administrador en la consola.
+	 */
 	private static void printMenuAdmin() {
 		System.out.println("\n--- MENÚ ADMINISTRADOR ---");
 		System.out.println("0) Crear cuentas de estudiante o coordinador");
@@ -247,6 +273,11 @@ public class App extends JFrame {
 		System.out.print("Seleccione opción: ");
 	}
 
+	/**
+	 * Lee un entero desde la entrada estándar (teclado).
+	 * Maneja excepciones si el dato no es numérico.
+	 * * @return El entero leído o -1 en caso de error.
+	 */
 	private static int escanearDesdeTeclado() {
 		Scanner s = new Scanner(System.in);
 		int op = -1;
@@ -258,6 +289,10 @@ public class App extends JFrame {
 		return op;
 	}
 	
+	/**
+	 * Lee una cadena de texto (String) desde la entrada estándar.
+	 * * @return La cadena leída.
+	 */
 	private static String escanearString() {
 		Scanner s = new Scanner(System.in);
 		String texto = "";

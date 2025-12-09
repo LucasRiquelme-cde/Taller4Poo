@@ -5,10 +5,21 @@ package taller4;
 import java.awt.GridLayout;
 import javax.swing.*;
 
+/**
+ * Ventana principal del menú para el rol de Estudiante.
+ * Sirve como panel central desde donde el alumno puede acceder a su perfil,
+ * visualizar su malla curricular, inscribir certificaciones y revisar su progreso.
+ */
 public class VentanaEstudiante extends JFrame {
 
 	private Estudiante estudianteLogueado;
 
+	/**
+	 * Constructor de la ventana de menú del estudiante.
+	 * Inicializa la interfaz gráfica personalizada con el nombre del alumno y
+	 * configura los botones de navegación hacia las distintas funcionalidades.
+	 * * @param estudiante Objeto Estudiante que ha iniciado sesión.
+	 */
 	public VentanaEstudiante(Estudiante estudiante) {
 		this.estudianteLogueado = estudiante;
 		

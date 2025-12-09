@@ -4,8 +4,19 @@ package taller4;
 
 import java.util.ArrayList;
 
+/**
+ * Implementación concreta de la estrategia de cálculo de promedios.
+ * Esta clase implementa la lógica para calcular el promedio académico considerando
+ * únicamente las asignaturas que han sido aprobadas (nota mayor o igual a 4.0).
+ */
 public class PromedioSoloAprobados implements EstrategiaPromedio {
 
+	/**
+	 * Calcula el promedio de las notas aprobadas.
+	 * Filtra la lista de notas entregada, sumando solo aquellas con calificación >= 4.0.
+	 * * @param notas Lista de notas del historial del estudiante.
+	 * @return El promedio de las notas azules, redondeado a dos decimales. Retorna 0.0 si no hay notas aprobadas.
+	 */
 	@Override
 	public double calcular(ArrayList<Nota> notas) {
 		if (notas.isEmpty()) return 0.0;

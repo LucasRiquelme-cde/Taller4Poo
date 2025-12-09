@@ -6,8 +6,19 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.*;
 
+/**
+ * Ventana encargada de la emisión de certificados de finalización.
+ * Permite al coordinador generar documentos oficiales (simulados en consola)
+ * para aquellos estudiantes que hayan completado exitosamente una línea de certificación.
+ */
 public class VentanaGenerarCertificados extends JFrame {
+	
 	Sistema s = Sistema.getInstance();
+
+	/**
+	 * Constructor de la ventana de generación de certificados.
+	 * Configura la interfaz visual con un botón de acción para procesar las solicitudes.
+	 */
 	public VentanaGenerarCertificados() {
 		setTitle("Generar Certificados");
 		setSize(400, 200);
@@ -30,6 +41,12 @@ public class VentanaGenerarCertificados extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Procesa la generación masiva de certificados.
+	 * Recorre la lista de todos los estudiantes y verifica sus registros.
+	 * Si encuentra un registro con estado "Completado", imprime el certificado correspondiente
+	 * en la salida estándar.
+	 */
 	public void generar() {
 		System.out.println("Iniciando Generación de Certificados");
 		

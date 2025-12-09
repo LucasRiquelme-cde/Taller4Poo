@@ -2,8 +2,18 @@
 //Lucas Riquelme / 21.943.208-9 / ICCI
 package taller4;
 
+/**
+ * Implementación concreta del patrón Visitor.
+ * Esta clase define la operación de "Dar Consejo", la cual analiza el tipo de certificación
+ * que el estudiante está cursando y ofrece una recomendación académica personalizada.
+ */
 public class VisitorConsejo implements Visitor {
 
+	/**
+	 * Método que visita un objeto de tipo Certificación y ejecuta la lógica de consejería.
+	 * Evalúa el ID de la certificación para imprimir un mensaje específico en la consola.
+	 * * @param c La certificación sobre la cual se generará el consejo.
+	 */
 	@Override
 	public void visit(Certificacion c) {
 		System.out.println("Consejo del sistema para: " + c.getNombre());

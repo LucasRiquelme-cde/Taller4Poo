@@ -5,11 +5,24 @@ package taller4;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.*;
+
+/**
+ * Ventana que permite al estudiante realizar el seguimiento de su progreso académico.
+ * Ofrece funcionalidades para ver el porcentaje de avance en certificaciones inscritas,
+ * listar asignaturas pendientes y solicitar consejos académicos utilizando el patrón **Visitor**.
+ */
 public class VentanaProgresoEstudiante extends JFrame {
+	
 	Sistema s = Sistema.getInstance();
 	private Estudiante estudiante;
 	private JTextField tId;
 
+	/**
+	 * Constructor de la ventana de progreso.
+	 * Configura los botones para las acciones de seguimiento y el campo de texto
+	 * para ingresar el ID de la certificación a consultar.
+	 * * @param e El estudiante que está consultando su progreso.
+	 */
 	public VentanaProgresoEstudiante(Estudiante e) {
 		this.estudiante = e;
 		
@@ -49,6 +62,11 @@ public class VentanaProgresoEstudiante extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Calcula y muestra el porcentaje de avance de las certificaciones inscritas.
+	 * Compara la cantidad de cursos aprobados vs el total de cursos de la certificación
+	 * e imprime el resultado en la consola.
+	 */
 	public void verProgreso() {
 		System.out.println("Dashboard de Progreso");
 		ArrayList<Registro> registros = estudiante.getListaRegistrosE();
@@ -74,6 +92,11 @@ public class VentanaProgresoEstudiante extends JFrame {
 		}
 	}
 
+	/**
+	 * Identifica y lista las asignaturas pendientes para una certificación específica.
+	 * Busca el ID ingresado y verifica qué cursos de esa certificación no tienen
+	 * una nota aprobatoria en el historial del estudiante.
+	 */
 	public void verPendientes() {
 		String id = tId.getText();
 		System.out.println("Analizando pendientes para: " + id);
@@ -108,6 +131,11 @@ public class VentanaProgresoEstudiante extends JFrame {
 		System.out.println("");
 	}
 
+	/**
+	 * Ejecuta el patrón de diseño Visitor.
+	 * Crea una instancia de VisitorConsejo y "visita" la certificación seleccionada
+	 * para generar una recomendación académica personalizada.
+	 */
 	public void usarVisitor() {
 		String id = tId.getText();
 		Certificacion cert = buscarCertificacion(id);
@@ -120,6 +148,11 @@ public class VentanaProgresoEstudiante extends JFrame {
 		}
 	}
 
+	/**
+	 * Busca una certificación en el sistema por su ID.
+	 * @param id Identificador de la certificación.
+	 * @return Objeto Certificacion si existe, null si no.
+	 */
 	private Certificacion buscarCertificacion(String id) {
 		ArrayList<Certificacion> listaCe = s.getListaCertificaciones();
 		for (Certificacion c : listaCe) {
@@ -130,6 +163,11 @@ public class VentanaProgresoEstudiante extends JFrame {
 		return null;
 	}
 
+	/**
+	 * Cuenta el total de cursos que componen una certificación.
+	 * @param idCert ID de la certificación.
+	 * @return Cantidad de cursos.
+	 */
 	private int contarTotalCursos(String idCert) {
 		Certificacion c = buscarCertificacion(idCert);
 		if (c != null) {
@@ -138,6 +176,11 @@ public class VentanaProgresoEstudiante extends JFrame {
 		return 0;
 	}
 
+	/**
+	 * Calcula cuántos cursos de una certificación específica han sido aprobados por el estudiante.
+	 * @param idCert ID de la certificación.
+	 * @return Cantidad de cursos aprobados.
+	 */
 	private int calcularCursosAprobados(String idCert) {
 		Certificacion c = buscarCertificacion(idCert);
 		if (c == null) return 0;

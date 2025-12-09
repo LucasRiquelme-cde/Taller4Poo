@@ -4,8 +4,19 @@ package taller4;
 
 import java.util.*;
 
+/**
+ * Implementación concreta de la estrategia de cálculo de promedios.
+ * Esta clase calcula el promedio simple (aritmético) considerando todas las notas
+ * válidas (mayores a 0) registradas en el historial del estudiante.
+ */
 public class PromedioSimple implements EstrategiaPromedio {
 	
+	/**
+	 * Calcula el promedio general de todas las notas.
+	 * Itera sobre la lista completa, suma todas las calificaciones válidas y divide por la cantidad total.
+	 * * @param notas Lista de notas del estudiante.
+	 * @return El promedio general redondeado a dos decimales, o 0.0 si no hay notas válidas.
+	 */
 	public double calcular(ArrayList<Nota> notas) {
 		if (notas.isEmpty()) return 0.0;
 		double suma = 0;

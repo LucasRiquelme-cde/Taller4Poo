@@ -5,10 +5,19 @@ package taller4;
 import java.awt.GridLayout;
 import javax.swing.*;
 
+/**
+ * Ventana que permite a los coordinadores modificar la información de una línea de certificación existente.
+ * Facilita la búsqueda por ID y la edición de campos como nombre, descripción, requisitos y validez.
+ */
 public class VentanaModificarCertificacion extends JFrame {
 	
 	JTextField tId, tNombre, tDescripcion, tRequisitos, tValidez;
 
+	/**
+	 * Constructor de la ventana de modificación.
+	 * Configura el diseño de cuadrícula (GridLayout) e inicializa los campos de texto
+	 * y botones necesarios para la gestión.
+	 */
 	public VentanaModificarCertificacion() {
 		setTitle("Modificar Certificación");
 		setSize(400, 300);
@@ -66,6 +75,10 @@ public class VentanaModificarCertificacion extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Busca una certificación en la lista del sistema utilizando el ID ingresado.
+	 * Si la encuentra, rellena los campos de texto con la información actual para su edición.
+	 */
 	public void buscar() {
 		String id = tId.getText();
 		for (Certificacion c : Sistema.listaCertificaciones) {
@@ -79,6 +92,10 @@ public class VentanaModificarCertificacion extends JFrame {
 		}
 	}
 
+	/**
+	 * Guarda los cambios realizados en los campos de texto sobre el objeto Certificación correspondiente.
+	 * Actualiza los atributos nombre, descripción, requisitos y validez en memoria.
+	 */
 	public void guardar() {
 		String id = tId.getText();
 		for (Certificacion c : Sistema.listaCertificaciones) {
