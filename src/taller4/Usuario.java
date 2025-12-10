@@ -12,7 +12,7 @@ public abstract class Usuario {
 
 	/**
 	 * Constructor de la clase Usuario.
-	 * * @param nombre     Nombre de usuario (login).
+	 * @param nombre     Nombre de usuario (login).
 	 * @param contraseña Contraseña de acceso.
 	 * @param rol        Rol del usuario ("Admin" o "Coordinador").
 	 * @param info       Información extra (ej: Área de coordinación).
@@ -50,9 +50,19 @@ public abstract class Usuario {
 	}
 	
 	/**
+	 * Obtiene la información adicional (ej: Área).
+	 * Necesario para guardar los datos en el archivo de texto.
+	 * @return La información extra.
+	 */
+	public String getInfo() {
+		return info;
+	}
+	
+	/**
 	 * Retorna una representación en cadena del objeto Usuario.
 	 * @return String con los detalles del usuario.
 	 */
+	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", Contraseña=" + Contraseña + ", rol=" + rol + ", info=" + info + "]";
 	}
@@ -80,7 +90,4 @@ public abstract class Usuario {
     public void setInfo(String info) {
         this.info = info;
     }
-	
-	
-	
 }
