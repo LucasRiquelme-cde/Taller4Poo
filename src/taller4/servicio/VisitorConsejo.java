@@ -1,6 +1,8 @@
-//Matías Collao / 22.060.152-8 / ICCI
-//Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+// Matías Collao / 22.060.152-8 / ICCI
+// Lucas Riquelme / 21.943.208-9 / ICCI
+package taller4.servicio;
+
+import taller4.modelo.Certificacion;
 
 /**
  * Implementación concreta del patrón Visitor.
@@ -12,7 +14,7 @@ public class VisitorConsejo implements Visitor {
 	/**
 	 * Método que visita un objeto de tipo Certificación y ejecuta la lógica de consejería.
 	 * Evalúa el ID de la certificación para imprimir un mensaje específico en la consola.
-	 * * @param c La certificación sobre la cual se generará el consejo.
+	 * @param c La certificación sobre la cual se generará el consejo.
 	 */
 	@Override
 	public void visit(Certificacion c) {

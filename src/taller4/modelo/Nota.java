@@ -1,11 +1,10 @@
-//Matías Collao / 22.060.152-8 / ICCI
-//Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+// Matías Collao / 22.060.152-8 / ICCI
+// Lucas Riquelme / 21.943.208-9 / ICCI
+package taller4.modelo;
 
 /**
  * Clase que representa una calificación obtenida por un estudiante en una asignatura específica.
- * Almacena el detalle del rendimiento académico, incluyendo la nota, el estado de aprobación
- * y el semestre en que se cursó.
+ * Almacena el detalle del rendimiento académico.
  */
 public class Nota {
 	
@@ -14,14 +13,13 @@ public class Nota {
 	
 	/**
 	 * Constructor de la clase Nota.
-	 * * @param rut              RUT del estudiante asociado a esta nota.
+	 * @param rut              RUT del estudiante asociado a esta nota.
 	 * @param codigoAsignatura Código (NRC o ID) de la asignatura evaluada.
-	 * @param estado           Estado final de la asignatura (ej: "Aprobada", "Reprobada", "Cursando").
-	 * @param semestreCursado  Semestre académico en el que se obtuvo la calificación (ej: "2024-1").
-	 * @param calificacion     Valor numérico de la nota (ej: 6.5).
+	 * @param estado           Estado final de la asignatura (ej: "Aprobada", "Reprobada").
+	 * @param semestreCursado  Semestre académico en el que se obtuvo la calificación.
+	 * @param calificacion     Valor numérico de la nota.
 	 */
 	public Nota(String rut, String codigoAsignatura, String estado, String semestreCursado, double calificacion) {
-		
 		this.rut = rut;
 		this.codigoAsignatura = codigoAsignatura;
 		this.estado = estado;
@@ -60,7 +58,4 @@ public class Nota {
 	public String getSemestreCursado() {
 		return semestreCursado;
 	}
-	
-	
-	
 }

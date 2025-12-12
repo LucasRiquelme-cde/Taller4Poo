@@ -1,15 +1,13 @@
 //Matías Collao / 22.060.152-8 / ICCI
 //Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+package taller4.visita;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
+import taller4.modelo.*;
+import taller4.Sistema;
 /**
  * Ventana que permite al coordinador validar la consistencia académica de un estudiante.
  * Compara el progreso registrado en el sistema contra el historial real de notas 

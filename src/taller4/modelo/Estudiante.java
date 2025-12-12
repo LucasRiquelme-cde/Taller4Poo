@@ -1,6 +1,6 @@
-//Matías Collao / 22.060.152-8 / ICCI
-//Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+// Matías Collao / 22.060.152-8 / ICCI
+// Lucas Riquelme / 21.943.208-9 / ICCI
+package taller4.modelo;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class Estudiante {
 	/**
 	 * Constructor de la clase Estudiante.
 	 * Inicializa los datos personales y las listas de registros académicos.
-	 * * @param rut        RUT del estudiante (identificador único).
+	 * @param rut        RUT del estudiante (identificador único).
 	 * @param nombre     Nombre completo.
 	 * @param carrera    Carrera que cursa.
 	 * @param semestre   Semestre actual.
@@ -50,7 +50,6 @@ public class Estudiante {
 	 */
 	public void agregarRegistro(Registro r) {
 		this.listaRegistrosE.add(r);
-		
 	}
 
 	/**
@@ -59,7 +58,6 @@ public class Estudiante {
 	 */
 	public void agregarNota(Nota n) {
 		this.listaNotas.add(n);
-		
 	}
 
 	/**
@@ -157,5 +155,4 @@ public class Estudiante {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-	
 }

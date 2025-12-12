@@ -1,6 +1,6 @@
-//Matías Collao / 22.060.152-8 / ICCI
-//Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+// Matías Collao / 22.060.152-8 / ICCI
+// Lucas Riquelme / 21.943.208-9 / ICCI
+package taller4.modelo;
 
 /**
  * Clase abstracta que define la estructura base para los usuarios del staff (Administradores y Coordinadores).
@@ -8,7 +8,7 @@ package taller4;
  */
 public abstract class Usuario {
 	
-	protected String nombre, Contraseña, rol, info;
+	protected String nombre, contraseña, rol, info;
 
 	/**
 	 * Constructor de la clase Usuario.
@@ -20,7 +20,7 @@ public abstract class Usuario {
 	public Usuario(String nombre, String contraseña, String rol, String info) {
 		super();
 		this.nombre = nombre;
-		this.Contraseña = contraseña;
+		this.contraseña = contraseña;
 		this.rol = rol;
 		this.info = info;
 	}
@@ -38,7 +38,7 @@ public abstract class Usuario {
 	 * @return La contraseña.
 	 */
 	public String getContraseña() {
-		return Contraseña;
+		return contraseña;
 	}
 
 	/**
@@ -51,7 +51,6 @@ public abstract class Usuario {
 	
 	/**
 	 * Obtiene la información adicional (ej: Área).
-	 * Necesario para guardar los datos en el archivo de texto.
 	 * @return La información extra.
 	 */
 	public String getInfo() {
@@ -64,7 +63,7 @@ public abstract class Usuario {
 	 */
 	@Override
 	public String toString() {
-		return "Usuario [nombre=" + nombre + ", Contraseña=" + Contraseña + ", rol=" + rol + ", info=" + info + "]";
+		return "Usuario [nombre=" + nombre + ", Contraseña=" + contraseña + ", rol=" + rol + ", info=" + info + "]";
 	}
 	
 	/**
@@ -80,7 +79,7 @@ public abstract class Usuario {
 	 * @param contraseña Nueva contraseña.
 	 */
     public void setContraseña(String contraseña) {
-        this.Contraseña = contraseña;
+        this.contraseña = contraseña;
     }
     
     /**

@@ -1,6 +1,6 @@
 //Matías Collao / 22.060.152-8 / ICCI
 //Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+package taller4.modelo;
 
 /**
  * Clase que representa a un usuario con rol de Administrador en el sistema.

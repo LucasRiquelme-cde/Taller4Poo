@@ -1,9 +1,10 @@
 //Matías Collao / 22.060.152-8 / ICCI
 //Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+package taller4.visita;
 import javax.swing.*;
 import java.awt.*;
 
+import taller4.Sistema;
 /**
  * Ventana principal del menú para el rol de Coordinador.
  * Proporciona un panel centralizado con acceso a las funcionalidades de gestión 

@@ -1,6 +1,8 @@
-//Matías Collao / 22.060.152-8 / ICCI
-//Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+// Matías Collao / 22.060.152-8 / ICCI
+// Lucas Riquelme / 21.943.208-9 / ICCI
+package taller4.servicio;
+
+import taller4.modelo.Certificacion;
 
 /**
  * Interfaz que define el contrato para el patrón de diseño Visitor.

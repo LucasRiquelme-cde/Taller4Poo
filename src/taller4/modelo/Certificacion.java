@@ -1,6 +1,6 @@
-//Matías Collao / 22.060.152-8 / ICCI
-//Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+// Matías Collao / 22.060.152-8 / ICCI
+// Lucas Riquelme / 21.943.208-9 / ICCI
+package taller4.modelo;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class Certificacion {
 	/**
 	 * Constructor de la clase Certificacion.
 	 * Inicializa los atributos y crea la lista de cursos vacía.
-	 * * @param id          Identificador único de la certificación (ej: CERT-001).
+	 * @param id          Identificador único de la certificación.
 	 * @param nombre      Nombre de la certificación.
 	 * @param descripcion Descripción detallada de lo que abarca.
 	 * @param requisitos  Requisitos mínimos (créditos) para obtenerla.
@@ -42,8 +42,7 @@ public class Certificacion {
 
 	/**
 	 * Agrega un curso a la lista de asignaturas de esta certificación.
-	 * Utilizado para vincular los cursos leídos desde el archivo de cruce.
-	 * * @param cu Objeto Curso a agregar.
+	 * @param cu Objeto Curso a agregar.
 	 */
 	public void agregarCurso(Curso cu) {
 		this.listaCursos.add(cu);

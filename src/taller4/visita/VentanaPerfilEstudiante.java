@@ -1,10 +1,13 @@
 //Matías Collao / 22.060.152-8 / ICCI
 //Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+package taller4.visita;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.*;
+
+import taller4.modelo.*;
+import taller4.servicio.*;
 
 /**
  * Ventana que muestra el perfil académico del estudiante.

@@ -1,8 +1,9 @@
-//Matías Collao / 22.060.152-8 / ICCI
-//Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+// Matías Collao / 22.060.152-8 / ICCI
+// Lucas Riquelme / 21.943.208-9 / ICCI
+package taller4.servicio;
 
-import java.util.*;
+import java.util.ArrayList;
+import taller4.modelo.Nota;
 
 /**
  * Implementación concreta de la estrategia de cálculo de promedios.
@@ -14,9 +15,10 @@ public class PromedioSimple implements EstrategiaPromedio {
 	/**
 	 * Calcula el promedio general de todas las notas.
 	 * Itera sobre la lista completa, suma todas las calificaciones válidas y divide por la cantidad total.
-	 * * @param notas Lista de notas del estudiante.
+	 * @param notas Lista de notas del estudiante.
 	 * @return El promedio general redondeado a dos decimales, o 0.0 si no hay notas válidas.
 	 */
+	@Override
 	public double calcular(ArrayList<Nota> notas) {
 		if (notas.isEmpty()) return 0.0;
 		double suma = 0;
@@ -32,5 +34,4 @@ public class PromedioSimple implements EstrategiaPromedio {
 		if (contador == 0) return 0.0;
 		return Math.round((suma / contador) * 100.0) / 100.0;
 	}
-
 }

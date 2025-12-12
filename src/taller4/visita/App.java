@@ -1,10 +1,12 @@
-//Matías Collao / 22.060.152-8 / ICCI
-//Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+// Matías Collao / 22.060.152-8 / ICCI
+// Lucas Riquelme / 21.943.208-9 / ICCI
+package taller4.visita;
 
 import java.awt.*;
 import java.io.*;
 import javax.swing.*;
+import taller4.Sistema;
+import taller4.modelo.Estudiante;
 
 /**
  * Clase principal de la aplicación AcademiCore.
@@ -70,15 +72,12 @@ public class App extends JFrame {
 		String opMenus = s.getMenu(usuario.getText(), contraseña.getText());
 		
 		if (opMenus.equals("A")) {
-			// Abre la ventana gráfica de Administrador
 			new VentanaAdministrador();
 			
 		} else if (opMenus.equals("C")) {
-			// Abre la ventana gráfica de Coordinador
 		    new VentanaCoordinador(s);
 		    
 		} else if (opMenus.equals("E")) {
-		    // Busca al estudiante logueado para pasar sus datos a su ventana personal
 		    Estudiante estudianteLogueado = null;
 		    for(Estudiante est : s.getlistaEstudiantes()) { 
 		        if(est.getRut().equals(usuario.getText())) {

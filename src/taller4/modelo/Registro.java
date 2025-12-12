@@ -1,6 +1,6 @@
-//Matías Collao / 22.060.152-8 / ICCI
-//Lucas Riquelme / 21.943.208-9 / ICCI
-package taller4;
+// Matías Collao / 22.060.152-8 / ICCI
+// Lucas Riquelme / 21.943.208-9 / ICCI
+package taller4.modelo;
 
 /**
  * Clase que representa el registro de inscripción de un estudiante a una certificación.
@@ -13,9 +13,9 @@ public class Registro {
 	
 	/**
 	 * Constructor de la clase Registro.
-	 * * @param rut             RUT del estudiante que se inscribe.
+	 * @param rut             RUT del estudiante que se inscribe.
 	 * @param idCertificacion ID de la certificación a la que se inscribe.
-	 * @param fecha           Fecha de la inscripción (formato YYYY-MM-DD).
+	 * @param fecha           Fecha de la inscripción.
 	 * @param estado          Estado actual del registro (ej: "Activa", "Completada").
 	 * @param progreso        Porcentaje de avance en la certificación (0 a 100).
 	 */
@@ -51,6 +51,4 @@ public class Registro {
 	public int getProgreso() {
 		return progreso;
 	}
-	
-	
 }
