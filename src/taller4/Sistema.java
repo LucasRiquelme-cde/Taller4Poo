@@ -3,8 +3,13 @@
 package taller4;
 
 import java.util.ArrayList;
-import taller4.escritura.GestorArchivos; 
-import taller4.modelo.*; 
+
+import taller4.Dominio.Certificacion;
+import taller4.Dominio.Curso;
+import taller4.Dominio.Estudiante;
+import taller4.Dominio.FactoryUsuario;
+import taller4.Dominio.Usuario;
+import taller4.Logica.GestorArchivos; 
 
 /**
  * Clase principal que actúa como el controlador central del sistema (Patrón Singleton).
